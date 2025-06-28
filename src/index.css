@@ -134,6 +134,7 @@ body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   padding-top: 80px;
+  position: relative;
 }
 
 .hero-container {
@@ -205,7 +206,23 @@ body {
 .btn-secondary:hover {
   background: white;
   color: #667eea;
+}
+
+.btn-chat {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.btn-chat:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
+}
+
+.btn-chat i {
+  margin-right: 0.5rem;
 }
 
 .hero-image {
@@ -224,6 +241,310 @@ body {
   justify-content: center;
   font-size: 8rem;
   color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Hero Chatbot Styles */
+.hero-chatbot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+}
+
+.hero-chatbot-container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  color: #333;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-chatbot-header {
+  background: #e74c3c;
+  color: white;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-chatbot-header h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.hero-chatbot-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.hero-chatbot-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-chatbot-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  max-height: 300px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f8f9fa;
+}
+
+.hero-chatbot-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hero-chatbot-messages::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+
+.hero-chatbot-messages::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+.hero-chatbot-message {
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.hero-chatbot-message.user {
+  justify-content: flex-end;
+}
+
+.hero-chatbot-message.bot {
+  justify-content: flex-start;
+}
+
+.hero-message-content {
+  max-width: 80%;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  position: relative;
+}
+
+.hero-chatbot-message.user .hero-message-content {
+  background: #e74c3c;
+  color: white;
+  border-bottom-right-radius: 5px;
+}
+
+.hero-chatbot-message.bot .hero-message-content {
+  background: white;
+  color: #333;
+  border: 1px solid #e1e5e9;
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-message-content p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.hero-message-time {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  display: block;
+}
+
+.hero-chatbot-message.user .hero-message-time {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-chatbot-message.bot .hero-message-time {
+  color: #6c757d;
+}
+
+.hero-loading-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  background: #6c757d;
+  border-radius: 50%;
+  animation: hero-bounce 1.4s infinite ease-in-out;
+}
+
+.hero-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.hero-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes hero-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.hero-chatbot-form {
+  padding: 1.5rem;
+  border-top: 1px solid #e1e5e9;
+  background: white;
+}
+
+.hero-chatbot-input-container {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.hero-chatbot-input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: 2px solid #e1e5e9;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+}
+
+.hero-chatbot-input:focus {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.hero-chatbot-input:disabled {
+  background: #f8f9fa;
+  cursor: not-allowed;
+}
+
+.hero-chatbot-send-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  min-width: 80px;
+}
+
+.hero-chatbot-send-btn:hover:not(:disabled) {
+  background: #c0392b;
+  transform: translateY(-1px);
+}
+
+.hero-chatbot-send-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Design for Hero Chatbot */
+@media (max-width: 768px) {
+  .hero-chatbot {
+    width: 95%;
+    max-width: none;
+  }
+  
+  .hero-chatbot-container {
+    max-height: 60vh;
+  }
+  
+  .hero-chatbot-messages {
+    max-height: 200px;
+    padding: 1rem;
+  }
+  
+  .hero-chatbot-form {
+    padding: 1rem;
+  }
+  
+  .hero-chatbot-input-container {
+    gap: 0.5rem;
+  }
+  
+  .hero-chatbot-input {
+    padding: 0.75rem 1rem;
+  }
+  
+  .hero-chatbot-send-btn {
+    padding: 0.75rem 1rem;
+    min-width: 60px;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-chat {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-chatbot {
+    width: 98%;
+  }
+  
+  .hero-chatbot-container {
+    max-height: 50vh;
+  }
+  
+  .hero-chatbot-messages {
+    max-height: 150px;
+    padding: 0.75rem;
+  }
+  
+  .hero-message-content {
+    max-width: 90%;
+    padding: 0.75rem 1rem;
+  }
+  
+  .hero-chatbot-form {
+    padding: 0.75rem;
+  }
+  
+  .hero-chatbot-input {
+    font-size: 0.9rem;
+  }
+  
+  .hero-chatbot-send-btn {
+    font-size: 0.9rem;
+  }
 }
 
 /* Section Styles */
